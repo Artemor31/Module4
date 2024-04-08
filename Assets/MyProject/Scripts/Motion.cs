@@ -24,6 +24,7 @@ public class Motion : MonoBehaviour
             direction.Normalize();
 
             transform.forward = direction;
+            direction += Physics.gravity;
 
             _controller.Move(direction * _speed * Time.deltaTime);
             _animator.SetFloat("Speed", _controller.velocity.magnitude);
