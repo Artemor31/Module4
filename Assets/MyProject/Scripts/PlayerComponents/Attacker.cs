@@ -1,10 +1,12 @@
 using UnityEngine;
 
 public class Attacker : MonoBehaviour
-{    private bool CanAttack => _attackTime <= 0;
+{    
+    private bool CanAttack => _attackTime <= 0;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private LayerMask _damageMask;
+    [SerializeField] private PlayerInput _input;
 
     [SerializeField] private float _attackCooldown;
     [SerializeField] private float _damage;
@@ -21,8 +23,8 @@ public class Attacker : MonoBehaviour
         {
             _attackTime -= Time.deltaTime;
         }
-
-        if (Input.GetMouseButtonDown(0) && CanAttack)
+        
+        if (_input.Attacking && CanAttack)
         {
 
             var index = Random.Range(0, 2);

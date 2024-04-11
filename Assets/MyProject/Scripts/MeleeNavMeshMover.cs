@@ -6,30 +6,27 @@ public class MeleeNavMeshMover : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private float _range;
 
-    Transform _player;
+    public void Stop() => UpdateSpeed(0);
 
-    private void Start()
+    public void MoveTo(Health player)
     {
-        _player = FindObjectOfType<Motion>().transform;
-        _agent.SetDestination(_player.position);
+        _agent.SetDestination(player.transform.position);
+        UpdateSpeed(_rigidbody.velocity.magnitude);
     }
 
-    private void Update()
+    public void UpdateSpeed(float speed)
     {
-        _agent.SetDestination(_player.position);
-
-        float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
-        if ( distanceToPlayer < _range)
+        if (speed <= 0.1f)
         {
             _agent.isStopped = true;
-            _animator.SetFloat("Speed", 0);
+            _animator.SetFloat("Speed", speed);
+
         }
         else
         {
             _agent.isStopped = false;
-            _animator.SetFloat("Speed", _rigidbody.velocity.magnitude);
+            _animator.SetFloat("Speed", speed);
         }
     }
 }
