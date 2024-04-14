@@ -2110,7 +2110,7 @@ GameObject:
   - component: {fileID: 7915548442853615253}
   - component: {fileID: 4629279639156681293}
   - component: {fileID: 8528284406525514593}
-  - component: {fileID: 6611887542899399090}
+  - component: {fileID: 4917388430775896157}
   m_Layer: 6
   m_Name: Dummy
   m_TagString: Untagged
@@ -2244,7 +2244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 4629279639156681293}
   _mover: {fileID: 8528284406525514593}
-  _attacker: {fileID: 6611887542899399090}
+  _attacker: {fileID: 4917388430775896157}
+  _role: {fileID: 11400000, guid: c6a9b04e639103149a9a98eeafb3c918, type: 2}
 --- !u!114 &4629279639156681293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2257,7 +2258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e508b0f17d08fe14ca82c21e21b958bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
   _animator: {fileID: 8934320512319004293}
 --- !u!114 &8528284406525514593
 MonoBehaviour:
@@ -2274,7 +2274,7 @@ MonoBehaviour:
   _agent: {fileID: 7767707191247053752}
   _animator: {fileID: 8934320512319004293}
   _rigidbody: {fileID: 1278587817351608028}
---- !u!114 &6611887542899399090
+--- !u!114 &4917388430775896157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2283,16 +2283,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2275510281298593519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a097cf6b3cf2b41967b98788ad7ee3, type: 3}
+  m_Script: {fileID: 11500000, guid: 589a77ee50047a244be2ba93244fd6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8934320512319004293}
   _damageMask:
     serializedVersion: 2
     m_Bits: 128
-  _attackCooldown: 3
-  _damage: 25
-  _radius: 2
+  _hand: {fileID: 8710862187083552615}
 --- !u!1 &2376706145514974835
 GameObject:
   m_ObjectHideFlags: 0

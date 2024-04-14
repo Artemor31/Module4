@@ -2,13 +2,12 @@
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private Animator _animator;
     public bool IsDead => _currentHealth <= 0;
 
-    [SerializeField] private Animator _animator;
-    [SerializeField] private float _maxHealth;
     private float _currentHealth;
 
-    private void Start() => _currentHealth = _maxHealth;
+    public void Init(float _maxHealth) => _currentHealth = _maxHealth;
 
     public void TakeDamage(float damage)
     {
