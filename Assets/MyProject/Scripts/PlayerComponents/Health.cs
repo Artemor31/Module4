@@ -1,19 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    public bool IsDead => _currentHealth <= 0;
+    [SerializeField] private GameObject _bloodVfx;
+    public bool IsDead => CurrentHealth <= 0;
+    public event Action<Health> OnHealthChange;
 
-    private float _currentHealth;
+    public float CurrentHealth { get; private set; }
+    public float MaxHealth { get; private set; }
 
-    public void Init(float _maxHealth) => _currentHealth = _maxHealth;
+    public void Init(float _maxHealth)
+    {
+        MaxHealth = _maxHealth;
+        CurrentHealth = MaxHealth;
+    }
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
+        CurrentHealth -= damage;
+        OnHealthChange?.Invoke(this);
 
-        if (_currentHealth <= 0)
+        Instantiate(_bloodVfx, transform.position + Vector3.up, Quaternion.identity);
+        _animator.SetTrigger("Hited");
+
+        if (CurrentHealth <= 0)
         {
             Die();
         }

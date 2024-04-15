@@ -30,11 +30,12 @@ public class Attacker : MonoBehaviour
     {
         if (CooldownUp)
         {
-            AnimateAttack();
             ResetAttackTimer();
-            AttackNearEnemies();
+            AnimateAttack();
         }
     }
+
+    public void AttackEvent() => AttackNearEnemies();
 
     void Update()
     {
@@ -66,6 +67,8 @@ public class Attacker : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (_weapon == null) return;
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _weapon.Range);
     }

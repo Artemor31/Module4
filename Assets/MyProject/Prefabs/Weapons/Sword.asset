@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   AttackCooldown: 1.5
-  Damage: 20
-  Range: 1.5
+  Damage: 50
+  Range: 5
   Prefab: {fileID: 6717420903105006845, guid: 65de50e6ccf5a1948b53a6b02b07bfd7, type: 3}
   OverrideController: {fileID: 22100000, guid: 136c0e9886ea9a746b3b034ffbf16746, type: 2}
