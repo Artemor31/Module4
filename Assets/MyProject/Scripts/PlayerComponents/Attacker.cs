@@ -4,6 +4,7 @@ public class Attacker : MonoBehaviour
 {    
     public bool CooldownUp => _attackTime <= 0;
     public bool IsAttacking {  get; private set; }
+    public Weapon Weapon => _weapon;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private LayerMask _damageMask;
@@ -11,13 +12,19 @@ public class Attacker : MonoBehaviour
 
     private Collider[] _hits = new Collider[3];
     private Weapon _weapon;
+    private GameObject _weaponObject;
     private float _attackTime;
 
     public void Init(Weapon weapon)
     {
+        if (_weaponObject != null)
+        {
+            Destroy(_weaponObject);
+        }
+
         _weapon = weapon;
+        _weaponObject = Instantiate(_weapon.Prefab, _hand);
         ResetAttackTimer();
-        Instantiate(_weapon.Prefab, _hand);
 
         if (_weapon.OverrideController != null)
             _animator.runtimeAnimatorController = _weapon.OverrideController;

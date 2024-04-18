@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
@@ -6,6 +7,8 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private MeleeNavMeshMover _mover;
     [SerializeField] private Attacker _attacker;
     [SerializeField] private Role _role;
+    [SerializeField] private Loot _loot;
+    [SerializeField] private float _desappearTimer;
 
     private Health _player;
 
@@ -15,19 +18,42 @@ public class EnemyBrain : MonoBehaviour
 
         _health.Init(_role.Health);
         _attacker.Init(_role.Weapon);
+        _health.OnHealthChange += OnHealthChange;
+    }
+
+    private void OnHealthChange(Health health)
+    {
+        if (health.IsDead)
+        {
+            _health.OnHealthChange -= OnHealthChange;
+            StartCoroutine(DestroyBody());
+        }
+    }
+
+    private IEnumerator DestroyBody()
+    {
+        yield return new WaitForSeconds(_desappearTimer);
+        SpawnLoot();
+        Destroy(gameObject);
+    }
+
+    private void SpawnLoot()
+    {
+        Loot loot = Instantiate(_loot, transform.position, Quaternion.identity);
+        loot.Init(_attacker.Weapon);
     }
 
     private void Update()
     {
         if (_player.IsDead) return;
-        if (_health.IsDead ) return;
+        if (_health.IsDead) return;
 
         if (_attacker.TargetInRange(_player))
         {
             _mover.Stop();
             _attacker.Attack();
         }
-        else 
+        else
         {
             _mover.MoveTo(_player);
         }

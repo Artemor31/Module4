@@ -17,3 +17,4 @@ MonoBehaviour:
   Range: 1.2
   Prefab: {fileID: 5019679785689750319, guid: a9cd9a2e5ee9ff14081125b88266f4c3, type: 3}
   OverrideController: {fileID: 0}
+  Icon: {fileID: 21300000, guid: eab93444844589c40a72574411dd0120, type: 3}

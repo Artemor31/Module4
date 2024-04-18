@@ -2322,6 +2322,8 @@ MonoBehaviour:
   _mover: {fileID: 8528284406525514593}
   _attacker: {fileID: 4917388430775896157}
   _role: {fileID: 11400000, guid: c6a9b04e639103149a9a98eeafb3c918, type: 2}
+  _loot: {fileID: -4247532867497690925, guid: de945c42804a3a54689561053e81c513, type: 3}
+  _desappearTimer: 4
 --- !u!114 &4629279639156681293
 MonoBehaviour:
   m_ObjectHideFlags: 0
