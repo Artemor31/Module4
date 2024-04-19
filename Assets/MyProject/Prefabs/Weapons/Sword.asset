@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07a517217a8bb64785a215d16676fe9, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  AttackCooldown: 1.5
-  Damage: 50
-  Range: 5
+  Slot: 2
+  Icon: {fileID: 21300000, guid: 62a99ebf2f5cfe04da1d208b9e7817a9, type: 3}
   Prefab: {fileID: 6717420903105006845, guid: 65de50e6ccf5a1948b53a6b02b07bfd7, type: 3}
+  AttackCooldown: 1.5
+  Damage: 150
+  Range: 2
   OverrideController: {fileID: 22100000, guid: 136c0e9886ea9a746b3b034ffbf16746, type: 2}

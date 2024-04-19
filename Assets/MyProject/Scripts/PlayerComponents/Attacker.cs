@@ -12,12 +12,18 @@ public class Attacker : MonoBehaviour
     private Collider[] _hits = new Collider[3];
     private Weapon _weapon;
     private float _attackTime;
+    private GameObject _weaponObject;
 
-    public void Init(Weapon weapon)
+    public void SetWeapon(Weapon weapon)
     {
+        if (_weaponObject != null)
+        {
+            Destroy(_weaponObject);
+        }
+
         _weapon = weapon;
         ResetAttackTimer();
-        Instantiate(_weapon.Prefab, _hand);
+        _weaponObject = Instantiate(_weapon.Prefab, _hand);
 
         if (_weapon.OverrideController != null)
             _animator.runtimeAnimatorController = _weapon.OverrideController;

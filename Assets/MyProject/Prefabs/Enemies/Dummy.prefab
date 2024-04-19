@@ -2322,6 +2322,8 @@ MonoBehaviour:
   _mover: {fileID: 8528284406525514593}
   _attacker: {fileID: 4917388430775896157}
   _role: {fileID: 11400000, guid: c6a9b04e639103149a9a98eeafb3c918, type: 2}
+  _loot: {fileID: 8399248467231424384, guid: de945c42804a3a54689561053e81c513, type: 3}
+  _destroyDelay: 4
 --- !u!114 &4629279639156681293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2358,7 +2360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2275510281298593519}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 589a77ee50047a244be2ba93244fd6b2, type: 3}
   m_Name: 
