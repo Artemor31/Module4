@@ -7,4 +7,13 @@ public class Weapon : Item
     public float Damage;
     public float Range;
     public AnimatorOverrideController OverrideController;
+    public GripType Grip;
+    public Projectile ProjectilePrefab;
+}
+
+public enum GripType
+{
+    None = 0,
+    Left = 1,
+    Right = 2
 }

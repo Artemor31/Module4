@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,4 +30,6 @@ public class MeleeNavMeshMover : MonoBehaviour
             _animator.SetFloat("Speed", speed);
         }
     }
+
+    public void LookAt() => transform.LookAt(_agent.destination);
 }

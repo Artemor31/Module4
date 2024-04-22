@@ -48,9 +48,12 @@ public class EnemyBrain : MonoBehaviour
         if (_player.IsDead) return;
         if (_health.IsDead) return;
 
-        if (_attacker.TargetInRange(_player))
+        _attacker.SetTarget(_player);
+
+        if (_attacker.TargetInRange())
         {
             _mover.Stop();
+            _mover.LookAt();
             _attacker.Attack();
         }
         else

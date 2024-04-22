@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Attacker _attacker;
     [SerializeField] private InputManager _input;
     [SerializeField] private LootPicker _lootPicker;
+    [SerializeField] private Caster _caster;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour
     {
         _health.Init(role.Health);
         _attacker.Init(role.Weapon);
+        _input.Init(Camera.main);
     }
 
     void Update()
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
         if (_input.Attacking)
         {
             _attacker.Attack();
+            _caster.CastSpell(_health);
         }
 
         if (!_attacker.IsAttacking)
