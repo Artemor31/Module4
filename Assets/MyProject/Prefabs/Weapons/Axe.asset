@@ -19,3 +19,4 @@ MonoBehaviour:
   Damage: 35
   Range: 1.2
   OverrideController: {fileID: 0}
+  Grip: 2

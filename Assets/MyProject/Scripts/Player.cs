@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
         var role = StaticData.SelectedRole;
         _health.Init(role.Health);
         _attacker.SetWeapon(role.Weapon);
+        _input.Init(Camera.main);
         _lootPicker.OnLootPicked += OnLootPicked;
 
         InitInventory(role);

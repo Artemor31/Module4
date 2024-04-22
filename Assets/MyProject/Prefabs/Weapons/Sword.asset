@@ -19,3 +19,4 @@ MonoBehaviour:
   Damage: 150
   Range: 2
   OverrideController: {fileID: 22100000, guid: 136c0e9886ea9a746b3b034ffbf16746, type: 2}
+  Grip: 2

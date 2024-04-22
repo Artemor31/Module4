@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07a517217a8bb64785a215d16676fe9, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  Slot: 2
+  Icon: {fileID: 21300000, guid: fb2acd264db5e24428dbf84cf8f0f467, type: 3}
+  Prefab: {fileID: 3310385136486344979, guid: 7feff610b1d68414d95dd062b2f3caa4, type: 3}
+  AttackCooldown: 3
+  Damage: 15
+  Range: 7
+  OverrideController: {fileID: 22100000, guid: 8866048983ddb1e4a9ebbb1be1357e24, type: 2}
+  Grip: 1
+  IsRange: 1
+  Projectile: {fileID: 3925507952512394359, guid: 34967f046af41c04f9b75b8649062a07,
+    type: 3}
+  ProjectileSpeed: 10

@@ -2369,7 +2369,8 @@ MonoBehaviour:
   _damageMask:
     serializedVersion: 2
     m_Bits: 128
-  _hand: {fileID: 8710862187083552615}
+  _handRight: {fileID: 8710862187083552615}
+  _handLeft: {fileID: 2932647010048109029}
 --- !u!1 &2376706145514974835
 GameObject:
   m_ObjectHideFlags: 0

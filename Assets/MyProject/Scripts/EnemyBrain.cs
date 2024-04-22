@@ -14,10 +14,11 @@ public class EnemyBrain : MonoBehaviour
 
     private void Start()
     {
-        _player = FindObjectOfType<Motion>().GetComponent<Health>();
+        _player = FindObjectOfType<Player>().GetComponent<Health>();
 
         _health.Init(_role.Health);
         _attacker.SetWeapon(_role.Weapon);
+        _attacker.SetTarget(_player);
 
         _health.OnHealthChange += OnHealthChange;
     }
@@ -44,9 +45,10 @@ public class EnemyBrain : MonoBehaviour
         if (_player.IsDead) return;
         if (_health.IsDead ) return;
 
-        if (_attacker.TargetInRange(_player))
+        if (_attacker.TargetInRange())
         {
             _mover.Stop();
+            _mover.LookAt(_player);
             _attacker.Attack();
         }
         else 

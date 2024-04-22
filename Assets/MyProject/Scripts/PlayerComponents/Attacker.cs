@@ -7,12 +7,14 @@ public class Attacker : MonoBehaviour
 
     [SerializeField] private Animator _animator;
     [SerializeField] private LayerMask _damageMask;
-    [SerializeField] private Transform _hand;
+    [SerializeField] private Transform _handRight;
+    [SerializeField] private Transform _handLeft;
 
     private Collider[] _hits = new Collider[3];
     private Weapon _weapon;
     private float _attackTime;
     private GameObject _weaponObject;
+    private Health _target;
 
     public void SetWeapon(Weapon weapon)
     {
@@ -23,14 +25,17 @@ public class Attacker : MonoBehaviour
 
         _weapon = weapon;
         ResetAttackTimer();
-        _weaponObject = Instantiate(_weapon.Prefab, _hand);
+
+        _weaponObject = Instantiate(_weapon.Prefab, _weapon.Grip == GripType.Left ? _handLeft : _handRight);
 
         if (_weapon.OverrideController != null)
             _animator.runtimeAnimatorController = _weapon.OverrideController;
     }
 
-    public bool TargetInRange(Health target) =>
-        Vector3.Distance(transform.position, target.transform.position) < _weapon.Range;
+    public void SetTarget(Health target) => _target = target;
+
+    public bool TargetInRange() =>
+        Vector3.Distance(transform.position, _target.transform.position) < _weapon.Range;
 
     public void Attack()
     {
@@ -41,7 +46,26 @@ public class Attacker : MonoBehaviour
         }
     }
 
-    public void AttackEvent() => AttackNearEnemies();
+    // animation event
+    public void AttackEvent()
+    {
+        if (_weapon.IsRange)
+        {
+            var point = _target.transform.position + Vector3.up;
+            SpawnProjectile(point);
+        }
+        else
+        {
+            AttackNearEnemies();
+        }
+    }
+
+    private void SpawnProjectile(Vector3 targetPoint)
+    {
+        var projectile = Instantiate(_weapon.Projectile, _weaponObject.transform.position, Quaternion.identity);
+        projectile.transform.LookAt(targetPoint);
+        projectile.Init(_weapon.ProjectileSpeed, _weapon.Damage);
+    }
 
     void Update()
     {

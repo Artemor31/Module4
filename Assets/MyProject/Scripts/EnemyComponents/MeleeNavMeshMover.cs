@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,9 +10,9 @@ public class MeleeNavMeshMover : MonoBehaviour
 
     public void Stop() => UpdateSpeed(0);
 
-    public void MoveTo(Health player)
+    public void MoveTo(Health target)
     {
-        _agent.SetDestination(player.transform.position);
+        _agent.SetDestination(target.transform.position);
         UpdateSpeed(_rigidbody.velocity.magnitude);
     }
 
@@ -29,4 +30,6 @@ public class MeleeNavMeshMover : MonoBehaviour
             _animator.SetFloat("Speed", speed);
         }
     }
+
+    public void LookAt(Health target) => transform.LookAt(target.transform.position);
 }
