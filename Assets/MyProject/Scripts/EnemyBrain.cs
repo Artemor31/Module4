@@ -1,23 +1,30 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
+    public event Action<EnemyBrain> OnDied;
+    public int ExpReward { get; private set; }
+    public int GoldReward { get; private set; }
+
     [SerializeField] private Health _health;
     [SerializeField] private MeleeNavMeshMover _mover;
     [SerializeField] private Attacker _attacker;
-    [SerializeField] private Role _role;
     [SerializeField] private Loot _loot;
     [SerializeField] private float _desappearTimer;
 
     private Health _player;
+    private Item _lootItem;
 
-    private void Start()
+    public void Init(Player player, EnemyData data)
     {
-        _player = FindObjectOfType<Motion>().GetComponent<Health>();
-
-        _health.Init(_role.Health);
-        _attacker.Init(_role.Weapon);
+        _player = player.GetComponent<Health>(); 
+        _health.Init(data.Health);
+        _attacker.Init(data.Weapon);
+        ExpReward = data.Exp;
+        GoldReward = data.Gold;
+        _lootItem = data.LootItem;
         _health.OnHealthChange += OnHealthChange;
     }
 
@@ -27,6 +34,7 @@ public class EnemyBrain : MonoBehaviour
         {
             _health.OnHealthChange -= OnHealthChange;
             StartCoroutine(DestroyBody());
+            OnDied?.Invoke(this);
         }
     }
 
@@ -39,8 +47,10 @@ public class EnemyBrain : MonoBehaviour
 
     private void SpawnLoot()
     {
+        if (_lootItem == null) return;
+
         Loot loot = Instantiate(_loot, transform.position, Quaternion.identity);
-        loot.Init(_attacker.Weapon);
+        loot.Init(_lootItem);
     }
 
     private void Update()

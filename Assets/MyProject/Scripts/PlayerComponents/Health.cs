@@ -31,5 +31,28 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Die() => _animator.SetTrigger("Dead");
+    private void Die()
+    {
+        _animator.SetTrigger("Dead");
+    }
+
+    internal void AddHealth(float v)
+    {
+        MaxHealth += v;
+        CurrentHealth += v;
+        OnHealthChange?.Invoke(this);
+    }
+
+    internal HealthData Save() => new HealthData()
+    {
+        MaxHealth = MaxHealth,
+        Health = CurrentHealth
+    };
+
+    internal void Restore(HealthData data)
+    {
+        MaxHealth = data.MaxHealth;
+        CurrentHealth = data.Health;
+        OnHealthChange?.Invoke(this);
+    }
 }
