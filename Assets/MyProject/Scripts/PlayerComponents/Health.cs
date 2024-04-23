@@ -32,4 +32,30 @@ public class Health : MonoBehaviour
     }
 
     private void Die() => _animator.SetTrigger("Dead");
+
+    public void BoostMaxHealth(float healthBonus)
+    {
+        CurrentHealth += healthBonus;
+        MaxHealth += healthBonus;
+        OnHealthChange?.Invoke(this);
+    }
+
+    internal HealthData Save() => new HealthData()
+    {
+        Health = CurrentHealth,
+        MaxHealth = MaxHealth
+    };
+
+    internal void Restore(HealthData data)
+    {
+        CurrentHealth = data.Health;
+        MaxHealth = data.MaxHealth;
+        OnHealthChange?.Invoke(this);
+    }
+}
+[Serializable]
+public class HealthData
+{
+    public float Health;
+    public float MaxHealth;
 }
