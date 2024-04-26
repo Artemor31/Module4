@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,8 +29,10 @@ public class HUD : MonoBehaviour
 
     private void OpenInventoryClicked() => _inventory.SetActive(true);
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        if (_player == null) return;
+
         _player.GetComponent<Health>().OnHealthChange -= OnHealthChange;
         _player.OnExpChange -= OnExpChange;
         _player.OnGoldChange -= OnGoldChange;

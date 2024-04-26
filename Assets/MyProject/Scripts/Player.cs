@@ -48,13 +48,16 @@ public class Player : MonoBehaviour
         if (_input.Attacking)
         {
             _attacker.Attack();
-           // _caster.CastSpell(_health);
+        }
+        if (_input.Casting)
+        {
+            _caster.CastSpell(_input.GetPointerPosition());
         }
 
         if (!_attacker.IsAttacking)
         {
             _mover.Move(_input.Motion);
-        }        
+        }
     }
 
     internal void BoostExp(int expReward)

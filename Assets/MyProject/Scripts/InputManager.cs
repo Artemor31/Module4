@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
     private RaycastHit[] _hits = new RaycastHit[1];
     private Camera _camera;
 
+    public bool Casting => Input.GetMouseButtonDown(1);
     public bool Attacking => Input.GetMouseButtonDown(0);
     public Vector3 Motion => new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 

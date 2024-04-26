@@ -39,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: tpose
-      takeName: tpose
+      name: hum_male_meleeattack_1H_Weapon_01
+      takeName: hum_male_meleeattack_1H_Weapon_01
       internalID: 0
-      firstFrame: 0
-      lastFrame: 1
+      firstFrame: 2
+      lastFrame: 54
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

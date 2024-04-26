@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
     {
         if (_selected != null)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
             StaticData.SelectedRole = _selected.Role;
         }
     }

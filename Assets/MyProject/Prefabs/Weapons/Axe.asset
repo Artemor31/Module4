@@ -16,7 +16,7 @@ MonoBehaviour:
   Prefab: {fileID: 5019679785689750319, guid: a9cd9a2e5ee9ff14081125b88266f4c3, type: 3}
   AttackCooldown: 3
   Damage: 35
-  Range: 1.2
+  Range: 2
   OverrideController: {fileID: 0}
   Grip: 2
   ProjectilePrefab: {fileID: 0}

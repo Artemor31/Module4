@@ -9,7 +9,7 @@ public class EnemyBrain : MonoBehaviour
     public int GoldReward { get; private set; }
 
     [SerializeField] private Health _health;
-    [SerializeField] private MeleeNavMeshMover _mover;
+    [SerializeField] private NavMeshMover _mover;
     [SerializeField] private Attacker _attacker;
     [SerializeField] private Loot _loot;
     [SerializeField] private float _desappearTimer;
@@ -25,6 +25,10 @@ public class EnemyBrain : MonoBehaviour
         ExpReward = data.Exp;
         GoldReward = data.Gold;
         _lootItem = data.LootItem;
+
+        if (_mover is RangeNavMeshMover mover)
+            mover.Init(data.Weapon.Range);
+
         _health.OnHealthChange += OnHealthChange;
     }
 

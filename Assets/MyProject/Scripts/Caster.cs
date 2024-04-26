@@ -3,14 +3,19 @@ using UnityEngine;
 public class Caster : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private Spell _spell;
 
-    public void CastSpell(Health health)
+    internal void CastSpell(Vector3 point)
     {
         _animator.SetTrigger("Casted");
+        _spell.Cast(transform.position + Vector3.up, point);
     }
-}
 
-public class Spell
-{
-
+    private void Update()
+    {
+        if (_spell.Completed == false) 
+        {
+            _spell.Process();
+        }
+    }
 }

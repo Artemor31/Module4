@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 5696242636062314952}
   - component: {fileID: 4127251894458990519}
   - component: {fileID: 6963618782111976621}
-  - component: {fileID: 9213201226367100296}
+  - component: {fileID: -1847614988675084264}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   _attacker: {fileID: 8385740690582626662}
   _input: {fileID: 4127251894458990519}
   _lootPicker: {fileID: 6963618782111976621}
-  _caster: {fileID: 9213201226367100296}
+  _caster: {fileID: -1847614988675084264}
 --- !u!114 &1805751843925782392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0d2c5589e020744a5feaeab7a9f3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9213201226367100296
+--- !u!114 &-1847614988675084264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1175,6 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2922861734534516636}
+  _spell: {fileID: 11400000, guid: 6ddb7e17406399644ac88dca9ee05abf, type: 2}
 --- !u!1 &1083823134936528569
 GameObject:
   m_ObjectHideFlags: 0
